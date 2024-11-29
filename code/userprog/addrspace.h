@@ -13,6 +13,8 @@
 #ifndef ADDRSPACE_H
 #define ADDRSPACE_H
 
+#include "../machine/translate.h"
+#include "../machine/machine.h"
 #include "copyright.h"
 #include "filesys.h"
 #include <string.h>

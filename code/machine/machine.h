@@ -87,6 +87,8 @@ class Interrupt;
 
 class Machine {
   public:
+	bool usedPhyPages[NumPhysPages] = {0};
+	bool usedVirPages[NumPhysPages] = {0};
     Machine(bool debug);	// Initialize the simulation of the hardware
 				// for running user programs
     ~Machine();			// De-allocate the data structures

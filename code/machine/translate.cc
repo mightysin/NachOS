@@ -31,6 +31,7 @@
 
 #include "copyright.h"
 #include "main.h"
+#include "machine.h"
 
 // Routines for converting Words and Short Words to and from the
 // simulated machine's format of little endian.  These end up
@@ -184,6 +185,8 @@ Machine::WriteMem(int addr, int size, int value)
 ExceptionType
 Machine::Translate(int virtAddr, int* physAddr, int size, bool writing)
 {
+    cout << "virtaul address is: " << virtAddr << endl;
+
     int i;
     unsigned int vpn, offset;
     TranslationEntry *entry;
@@ -212,7 +215,9 @@ Machine::Translate(int virtAddr, int* physAddr, int size, bool writing)
 	    return AddressErrorException;
 	} else if (!pageTable[vpn].valid) {
             /* 		Add Page fault code here		*/
+            cout << "page fault: " << endl;
 	}
+
 	entry = &pageTable[vpn];
     } else {
         for (entry = NULL, i = 0; i < TLBSize; i++)

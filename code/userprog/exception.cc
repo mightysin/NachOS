@@ -24,6 +24,7 @@
 #include "copyright.h"
 #include "main.h"
 #include "syscall.h"
+#include "machine.h"
 
 //----------------------------------------------------------------------
 // ExceptionHandler
@@ -86,6 +87,11 @@ ExceptionHandler(ExceptionType which)
 	    break;
 	case PageFaultException:
 		/*    Page Fault Exception    */
+		cout << "Page Fault Exception" << endl;
+        break;
+	case BusErrorException:
+	    /*    Bus Error Exception    */
+		cout << "Bus Error Exception" << endl;
 	    break;
 	default:
 	    cerr << "Unexpected user mode exception" << which << "\n";

@@ -2,7 +2,10 @@
 
 main()
         {
-                int     n;
-                for (n=2020;n<=2030;n++)
-                        PrintInt(n);
+        int n;
+        for (n=2020;n<=2030;n++)
+        {
+                PrintInt(n);
+        }
+        return 0;
         }
