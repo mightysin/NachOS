@@ -99,6 +99,7 @@ AddrSpace::~AddrSpace()
 bool 
 AddrSpace::Load(char *fileName) 
 {
+
     OpenFile *executable = kernel->fileSystem->Open(fileName);
     NoffHeader noffH;
     unsigned int size;
@@ -120,6 +121,16 @@ AddrSpace::Load(char *fileName)
     numPages = divRoundUp(size, PageSize);
 	cout << "number of pages of " << fileName<< " is "<<numPages<<endl;
     size = numPages * PageSize;
+    cout << "size of " << fileName << " is " << size << endl;
+
+
+    kernel->machine->memorySize -= size;
+    if (kernel->machine->memorySize > 0) {
+        cout << "Main memory size remaining: " << kernel->machine->memorySize << endl;
+    }
+    else {
+        cout << "Main memory size is not enough to load the program." << endl;
+    }
 
     numPages = divRoundUp(size,PageSize);
     for(unsigned int i=0, j=0; i<numPages; i++){

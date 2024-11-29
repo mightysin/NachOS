@@ -185,8 +185,6 @@ Machine::WriteMem(int addr, int size, int value)
 ExceptionType
 Machine::Translate(int virtAddr, int* physAddr, int size, bool writing)
 {
-    cout << "virtaul address is: " << virtAddr << endl;
-
     int i;
     unsigned int vpn, offset;
     TranslationEntry *entry;
