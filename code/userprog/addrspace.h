@@ -26,7 +26,8 @@ class AddrSpace {
     AddrSpace();			// Create an address space.
     ~AddrSpace();			// De-allocate an address space
 
-    static bool usedPhyPage[NumPhysPages];
+    static bool usedPhyPage[NumPhysPages]; // Track which physical pages are used
+    static bool usedVirPage[NumPhysPages]; // Track which virtual pages are used
 
     void Execute(char *fileName);	// Run the the program
 					// stored in the file "executable"

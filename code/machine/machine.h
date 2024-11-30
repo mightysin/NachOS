@@ -87,11 +87,6 @@ class Interrupt;
 
 class Machine {
   public:
-	unsigned int memorySize = MemorySize;
-
-	bool usedPhyPages[NumPhysPages] = {0};
-	bool usedVirPages[NumPhysPages] = {0};
-
     Machine(bool debug);	// Initialize the simulation of the hardware
 				// for running user programs
     ~Machine();			// De-allocate the data structures
@@ -130,6 +125,9 @@ class Machine {
 // space, stored in memory), there is only one TLB (implemented in hardware).
 // Thus the TLB pointer should be considered as *read-only*, although 
 // the contents of the TLB are free to be modified by the kernel software.
+
+    // Personal variables
+	int count[NumPhysPages]; // Track used times for each physical page
 
     TranslationEntry *tlb;		// this pointer should be considered 
 					// "read-only" to Nachos kernel code

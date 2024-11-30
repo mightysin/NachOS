@@ -89,10 +89,30 @@ ExceptionHandler(ExceptionType which)
 		/*    Page Fault Exception    */
 		cout << "Page Fault Exception" << endl;
         break;
+	case ReadOnlyException:
+	    /*    Read Only Exception    */
+		cout << "Read Only Exception" << endl;
+        break;
 	case BusErrorException:
 	    /*    Bus Error Exception    */
 		cout << "Bus Error Exception" << endl;
 	    break;
+	case AddressErrorException:
+	    /*    Address Error Exception    */
+		cout << "Address Error Exception" << endl;
+        break;
+    case OverflowException:
+	    /*    Overflow Exception    */
+		cout << "Overflow Exception" << endl;
+        break;
+    case IllegalInstrException:
+	    /*    Illegal Instruction Exception    */
+		cout << "Illegal Instruction Exception" << endl;
+        break;
+    case NumExceptionTypes:
+	    /*    Unrecognized Exception    */
+		cout << "Number Exception Types" << endl;
+		break;
 	default:
 	    cerr << "Unexpected user mode exception" << which << "\n";
 	    break;

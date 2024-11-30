@@ -43,11 +43,11 @@ UserProgKernel::UserProgKernel(int argc, char **argv)
 			cout << "	./nachos -s : Print machine status during the machine is on." << endl;
 			cout << "	./nachos -e file1 -e file2 : executing file1 and file2."  << endl;
 		}
-		else if (strcmp(argv[i], "-FIFO") == 0) {
-			cout << "use fifo mode" << endl;
+		else if (strcmp(argv[i], "-FIFO") == 0) { // use flag to choose swapping policies
+			swapPolicy = FIFO;
 		}
 		else if (strcmp(argv[i], "-LRU") == 0) {
-			cout << "use lru mode" << endl;
+			swapPolicy = LRU;
 		}
     }
 }
@@ -64,6 +64,10 @@ UserProgKernel::Initialize()
 
     machine = new Machine(debugUserProg);
     fileSystem = new FileSystem();
+
+	// Initialize virtual memeory
+	virtualMemories = new SynchDisk("Virtual Memory");
+
 #ifdef FILESYS
     synchDisk = new SynchDisk("New SynchDisk");
 #endif // FILESYS
@@ -79,7 +83,6 @@ UserProgKernel::~UserProgKernel()
 {
     delete fileSystem;
     delete machine;
-	virtualMemories = new SynchDisk("Virtual Memory");
 #ifdef FILESYS
     delete synchDisk;
 #endif

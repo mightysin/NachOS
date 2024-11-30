@@ -32,7 +32,14 @@ class UserProgKernel : public ThreadedKernel {
 // These are public for notational convenience.
     Machine *machine;
     FileSystem *fileSystem;
-    SynchDisk *virtualMemories;
+
+    // Personal variables
+    SynchDisk *virtualMemories; // Add virtual memory to kernel
+    enum SwapPolicy {           // Determine which policy to use
+      FIFO,
+      LRU
+    };
+    SwapPolicy swapPolicy;
 
 #ifdef FILESYS
     SynchDisk *synchDisk;
